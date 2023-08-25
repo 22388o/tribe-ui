@@ -142,7 +142,70 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="section">
       <div class="section-header">Ordinals</div>
       <div class="content">
-        <!-- Content related to Ordinals here -->
+        <div class="section" id="ordinalsSection">
+  <h2 class="section-header">Ordinals (NFT) and Sign</h2>
+  <div class="content">
+    <button id="generateOrdinalButton">Generate Ordinal NFT</button>
+    <div id="ordinalContainer"></div>
+    <button id="finalizeButton">Finalize</button>
+    <div id="finalSignatureContainer"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const generateOrdinalButton = document.getElementById("generateOrdinalButton");
+  const ordinalContainer = document.getElementById("ordinalContainer");
+  const finalizeButton = document.getElementById("finalizeButton");
+  const finalSignatureContainer = document.getElementById("finalSignatureContainer");
+
+  let generatedOrdinal = null;
+
+  generateOrdinalButton.addEventListener("click", function() {
+    // Simulate generating an ordinal NFT using ordinals-js
+    generatedOrdinal = Ordinals.generate(); // Replace with actual generation logic
+
+    // Display the generated ordinal
+    const ordinalElement = document.createElement("div");
+    ordinalElement.textContent = "Generated Ordinal: " + generatedOrdinal;
+    ordinalContainer.appendChild(ordinalElement);
+  });
+
+  finalizeButton.addEventListener("click", function() {
+    if (!generatedOrdinal) {
+      alert("Generate an ordinal first.");
+      return;
+    }
+
+    // Simulate final multisig signature using generatedOrdinal
+    const privateKey1 = "private_key_1";
+    const privateKey2 = "private_key_2";
+    const message = "message_to_sign";
+
+    const multisigSignature = generateMultisigSignature(privateKey1, privateKey2, message, generatedOrdinal);
+
+    // Display the final multisig signature
+    const signatureElement = document.createElement("div");
+    signatureElement.textContent = "Final Multisig Signature: " + multisigSignature;
+    finalSignatureContainer.appendChild(signatureElement);
+  });
+
+  // Simulated multisig signature generation function
+  function generateMultisigSignature(privateKey1, privateKey2, message, ordinal) {
+    // Simulated implementation - replace with actual signature generation logic
+    const combinedPrivateKey = combinePrivateKeys(privateKey1, privateKey2);
+    const signature = signMessageWithPrivateKeyAndOrdinal(combinedPrivateKey, message, ordinal);
+    return signature;
+  }
+
+  // Simulated function - replace with actual implementation
+  function signMessageWithPrivateKeyAndOrdinal(privateKey, message, ordinal) {
+    // Simulated implementation - replace with actual signature logic
+    return "signature_for_" + message + "_with_" + privateKey + "_and_ordinal_" + ordinal;
+  }
+});
+</script>
+
       </div>
     </div>
   </div>
