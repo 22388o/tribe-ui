@@ -17,6 +17,9 @@
     margin: 20px 0;
   }
 
+  .actio-button {
+    
+
   .action-button {
     padding: 10px 20px;
     background-color: orange;
@@ -70,6 +73,26 @@
 </div>
 
 <script>
+  // Assuming you've included the necessary Web3.js library
+const connectWalletButton = document.getElementById('connect-wallet-button');
+
+connectWalletButton.addEventListener('click', async () => {
+  // Check if a compatible wallet is installed
+  if (typeof window.ethereum !== 'undefined') {
+    try {
+      // Request the user to connect their wallet
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      console.log('Wallet connected successfully');
+      // Additional actions you want to take after wallet connection
+    } catch (error) {
+      console.error('An error occurred while connecting the wallet:', error);
+    }
+  } else {
+    console.error('No Ethereum wallet detected.');
+    // You might show a message asking users to install a wallet
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
   const addNpubKeyButton = document.getElementById("addNpubKeyButton");
   const npubKeysContainer = document.getElementById("npubKeysContainer");
