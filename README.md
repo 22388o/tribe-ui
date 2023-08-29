@@ -1,8 +1,10 @@
-# Tibe-UI
+# Tibe UI 🫂
 
 PoC and UI 
 
-### UI Idea
+## About
+
+### UI Concept
 
 ```markdown 
 HOMEPAGE
