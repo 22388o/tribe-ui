@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tribe UI</title>
+<style>
+  /* Existing styles here */
+  .logo {
+    display: open;
+    margin: 0 auto;
+    width: 100px;
+  }
+
+  .button-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .action-button {
+    width: 1440px;
+    height: 1024px;
+    top: -582px;
+    left: 3512px;
+    position: absolute;
+    background-color: lightgray;
+    border: 2px solid gray;
+  }
+    margin: 20px 0;
+  }
+  .section-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .content {
+    padding: 15px;
+    border: 2px lightpray;
+    border-radius: 5px;
+  }
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: lightgray;
+    color: solid gray;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <img class="logo" src="Tribe.png" alt="Tribe Logo">
+  <div class="header">
+    <button class="action-button" id="connect-wallet-button">Connect Wallet</button>
+    <h1>Bitpac Management Interface</h1>
+  </div>
+     <div class="container">
+    <div class="button-container">
+      <button class="action-button">Home</button>
+      <button class="action-button">Join Bitpac</button>
+      <button class="action-button">Create New Bitpac</button>
+  <div class="container">
+    <div class="section">
+      <div class="section-header">Npub and Bitpac</div>
+      <div class="content">
+        <div class="section" id="joinBitpacSection">
+  <h2 class="section-header">Join Bitpac</h2>
+  <div class="content">
+    <button id="addNpubKeyButton">Add Npub Key</button>
+    <div id="npubKeysContainer"></div>
+  </div>
+</div>
+
+<script>
+const connectwallet =
+const connectWallet =
+const connectWalletButton = document.getElementById('connect-wallet-button');
+
+connectWalletButton.addEventListener('click', async () => {
+  // Check if a compatible wallet is installed
+  if (typeof window.ethereum !== 'undefined') {
+    try {
+      // Request the user to connect their wallet
+      await window.btc.request({ method: 'btc_requestAccounts' });
+      console.log('Wallet connected successfully');
+      // Additional actions you want to take after wallet connection
+    } catch (error) {
+      console.error('An error occurred while connecting the wallet:', error);
+    }
+  } else {
+    console.error('No Ethereum wallet detected.');
+    // You might show a message asking users to install a wallet
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const addNpubKeyButton = document.getElementById("addNpubKeyButton");
+  const npubKeysContainer = document.getElementById("npubKeysContainer");
+
+  addNpubKeyButton.addEventListener("click", function() {
+    // Simulate adding an Npub key using Nostr Tools (replace this with actual tool usage)
+    const newNpubKey = "your_generated_npub_key";
+
+    // Create a new element to display the added Npub key
+    const npubKeyElement = document.createElement("div");
+    npubKeyElement.textContent = "Npub Key: " + newNpubKey;
+    npubKeysContainer.appendChild(npubKeyElement);
+  });
+});
+</script>
+  </div>
+    </div>
+    <div class="section">
+      <div class="section-header">Multisig Signature</div>
+      <div class="content">
+<div class="section" id="multisigSection">
+  <h2 class="section-header">Multisig Signature</h2>
+  <div class="content">
+    <button id="generateSignatureButton">Generate Multisig Signature</button>
+    <div id="signatureContainer"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const generateSignatureButton = document.getElementById("generateSignatureButton");
+  const signatureContainer = document.getElementById("signatureContainer");
+
+  generateSignatureButton.addEventListener("click", function() {
+    // Simulate multisig signature generation (replace with actual logic)
+    const privateKey1 = "private_key_1";
+    const privateKey2 = "private_key_2";
+    const message = "message_to_sign";
+
+    // Perform multisig signature (replace with actual signature generation code)
+    const multisigSignature = generateMultisigSignature(privateKey1, privateKey2, message);
+
+    // Display the generated signature
+    const signatureElement = document.createElement("div");
+    signatureElement.textContent = "Multisig Signature: " + multisigSignature;
+    signatureContainer.appendChild(signatureElement);
+  });
+
+  // Simulated multisig signature generation function
+  function generateMultisigSignature(privateKey1, privateKey2, message) {
+    // Simulated implementation - replace with proper signature generation logic
+    const combinedPrivateKey = combinePrivateKeys(privateKey1, privateKey2);
+    const signature = signMessageWithPrivateKey(combinedPrivateKey, message);
+    return signature;
+  }
+
+  // Simulated functions - replace with actual implementations
+  function combinePrivateKeys(privateKey1, privateKey2) {
+    return privateKey1 + privateKey2; // Replace with actual key combination logic
+  }
+
+  function signMessageWithPrivateKey(privateKey, message) {
+    // Simulated implementation - replace with actual signature logic
+    return "signature_for_" + message + "_with_" + privateKey;
+  }
+});
+</script>
+      </div>      
+    </div>
+    <div class="section">
+      <div class="section-header">Ordinals</div>
+      <div class="content">
+        <div class="section" id="ordinalsSection">
+  <h2 class="section-header">Ordinals (NFT) and Sign</h2>
+  <div class="content">
+    <button id="generateOrdinalButton">Generate Ordinal NFT</button>
+    <div id="ordinalContainer"></div>
+    <button id="finalizeButton">Finalize</button>
+    <div id="finalSignatureContainer"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const generateOrdinalButton = document.getElementById("generateOrdinalButton");
+  const ordinalContainer = document.getElementById("ordinalContainer");
+  const finalizeButton = document.getElementById("finalizeButton");
+  const finalSignatureContainer = document.getElementById("finalSignatureContainer");
+
+  let generatedOrdinal = null;
+
+  generateOrdinalButton.addEventListener("click", function() {
+    // Simulate generating an ordinal NFT using ordinals-js
+    generatedOrdinal = Ordinals.generate(); // Replace with actual generation logic
+
+    // Display the generated ordinal
+    const ordinalElement = document.createElement("div");
+    ordinalElement.textContent = "Generated Ordinal: " + generatedOrdinal;
+    ordinalContainer.appendChild(ordinalElement);
+  });
+
+  finalizeButton.addEventListener("click", function() {
+    if (!generatedOrdinal) {
+      alert("Generate an ordinal first.");
+      return;
+    }
+
+    // Simulate final multisig signature using generatedOrdinal
+    const privateKey1 = "private_key_1";
+    const privateKey2 = "private_key_2";
+    const message = "message_to_sign";
+
+    const multisigSignature = generateMultisigSignature(privateKey1, privateKey2, message, generatedOrdinal);
+
+    // Display the final multisig signature
+    const signatureElement = document.createElement("div");
+    signatureElement.textContent = "Final Multisig Signature: " + multisigSignature;
+    finalSignatureContainer.appendChild(signatureElement);
+  });
+
+  // Simulated multisig signature generation function
+  function generateMultisigSignature(privateKey1, privateKey2, message, ordinal) {
+    // Simulated implementation - replace with actual signature generation logic
+    const combinedPrivateKey = combinePrivateKeys(privateKey1, privateKey2);
+    const signature = signMessageWithPrivateKeyAndOrdinal(combinedPrivateKey, message, ordinal);
+    return signature;
+  }
+
+  // Simulated function - replace with actual implementation
+  function signMessageWithPrivateKeyAndOrdinal(privateKey, message, ordinal) {
+    // Simulated implementation - replace with actual signature logic
+    return "signature_for_" + message + "_with_" + privateKey + "_and_ordinal_" + ordinal;
+  }
+});
+</script>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>&copy; 2023 Tribe. All rights reserved.</p>
+  </div>
+</body>
+</html>
