@@ -61,8 +61,3 @@ DASHBOARD PAGE
 |                                                 |
 ---------------------------------------------------
 ```
-## Demo Video 1
-
-![Demo Video](https://github.com/Tribe-BTC/Tibe-UI/blob/main/demo-video/Tribe.demo.gif)
-
-## Demo video 2
