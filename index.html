@@ -83,7 +83,7 @@ connectWalletButton.addEventListener('click', async () => {
   if (typeof window.ethereum !== 'undefined') {
     try {
       // Request the user to connect their wallet
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      await window.btc.request({ method: 'btc_requestAccounts' });
       console.log('Wallet connected successfully');
       // Additional actions you want to take after wallet connection
     } catch (error) {
