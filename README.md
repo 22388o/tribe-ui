@@ -4,6 +4,8 @@ PoC and UI
 
 ## About
 
+Our initial [website]*https://www.tribebtc.com/)
+
 ### UI Concept
 
 ```markdown 
